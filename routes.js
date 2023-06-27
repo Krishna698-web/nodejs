@@ -7,12 +7,12 @@ const routing = (req, res) => {
     res.write("<head>");
     res.write("<head><title>Form submission with post request</title></head>");
     res.write(
-      '<body><form action="/message" method="POST"><input type="text" name="name"><button type="submit">Send</button></form></body>'
+      '<body><form action="/user" method="POST"><input type="text" name="name"><button type="submit">Send</button></form></body>'
     ); //responded url localhost:3000/message
     res.write("</html>");
     return res.end();
   }
-  if (url === "/message" && method === "POST") {
+  if (url === "/user" && method === "POST") {
     const body = [];
     req.on("data", (chunk) => {
       console.log(chunk);
@@ -25,7 +25,7 @@ const routing = (req, res) => {
       fs.writeFileSync("message.txt", data); //creating and writing into a new file
     });
     res.statusCode = 302; //temprorarly found
-    res.setHeader("Location", "/"); //redirecting back to localhost:3000/
+    res.setHeader("Location", "/create-user"); //redirecting back to localhost:3000/
     return res.end(); //end of response
   }
   res.setHeader("Content-type", "text/html");
