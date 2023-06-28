@@ -1,22 +1,20 @@
-const http = require("http");
-
 const express = require("express");
 
 const app = express();
 
-app.use((req, res, next) => {
-  console.log('I"m in the middleware');
+//Middleware: functions that has access to all the req, res and next functionalities.
+// next(); //helps to jump to the next middleware
+
+app.use("/", (req, res, next) => {
+  console.log("I'm from / route");
   next();
 });
 
-app.use((req, res, next) => {
-  console.log('I"m in next middleware');
+app.use("/users", (req, res, next) => {
+  console.log("I'm from /user route");
+  res.send("I'm from the users route");
 });
 
-const server = http.createServer(app);
-
-server.listen(3000, () => {
-  console.log("listening");
+app.listen(3000, () => {
+  console.log("Hello");
 });
-
-// server.listen(3000);

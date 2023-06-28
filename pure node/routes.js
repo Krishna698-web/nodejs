@@ -13,6 +13,7 @@ const routing = (req, res) => {
     return res.end();
   }
   if (url === "/user" && method === "POST") {
+    res.setHeader("Content-type", "text/html");
     const body = [];
     req.on("data", (chunk) => {
       console.log(chunk);
