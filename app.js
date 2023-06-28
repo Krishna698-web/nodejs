@@ -12,9 +12,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //Middleware: functions that has access to all the req, res and next functionalities.
 // next(); //helps to jump to the next middleware
 
+app.use(shopRoutes);
 app.use(adminRoutes);
 
-app.use(shopRoutes);
+app.use((req, res, next) => {
+  res.status(404).send("<h1>Page not found</h1>");
+});
 
 app.listen(3000, () => {
   console.log("Hello");
