@@ -1,0 +1,25 @@
+main {
+  margin: 2rem 0;
+}
+.form {
+  padding: 1rem 2rem;
+}
+.field label {
+  font-size: 1.2rem;
+  display: block;
+}
+.form button {
+  padding: 8px;
+  font-size: 1.2rem;
+  border-radius: 3px;
+  background-color: white;
+  border-radius: 3px;
+  border: 2px solid gray;
+  margin: 8px 0;
+}
+.form button:hover,
+.form button:active {
+  border: 2px solid lightseagreen;
+  color: lightseagreen;
+  cursor: pointer;
+}

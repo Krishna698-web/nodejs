@@ -10,6 +10,7 @@ const app = express();
 
 // body parser to parse the incoming data.. {extended: false} as the extension was deprecated add it extensively
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, "public")));
 
 //Middleware: functions that has access to all the req, res and next functionalities.
 // next(); //helps to jump to the next middleware
