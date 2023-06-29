@@ -5,7 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Page not found</title>
   </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+    }
+    .main-header {
+      height: 3.5rem;
+      width: 100%;
+      background-color: lightblue;
+      display: flex;
+      align-items: center;
+      padding: 0 8px;
+    }
+    .main-header__list {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+    }
+    .main-header__item a {
+      text-decoration: none;
+      color: white;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    .main-header__item a:hover,
+    .main-header__item a:active,
+    .main-header__item a.active {
+      color: purple;
+    }
+  </style>
   <body>
+    <header class="main-header">
+      <nav class="main-header__nav">
+        <ul class="main-header__list">
+          <li class="main-header__item"><a href="/">Shop</a></li>
+          <li class="main-header__item">
+            <a class="active" href="/admin/add-product">Add Product</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
     <h1>Page not found</h1>
   </body>
 </html>
