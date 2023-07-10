@@ -9,6 +9,9 @@ const shopRoutes = require("./routes/shop");
 const app = express();
 
 // body parser to parse the incoming data.. {extended: false} as the extension was deprecated add it extensively
+app.use(bodyParser.urlencoded());
+
+// static path that directs to the public folder
 app.use(express.static(path.join(__dirname, "public")));
 
 // Middleware: functions that has access to all the req, res and next functionalities.
