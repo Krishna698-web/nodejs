@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 
 const adminRoutes = require("./routes/admin");
 const shopRoutes = require("./routes/shop");
+const db = require("./utils/database");
 
 const app = express();
 
@@ -17,6 +18,14 @@ app.use(express.static(path.join(__dirname, "public")));
 // Middleware: functions that has access to all the req, res and next functionalities.
 // next(); //helps to jump to the next middleware
 
+// Sql promise/ Query
+db.execute("SELECT * FROM products")
+  .then((result) => {
+    console.log(result[0]);
+  })
+  .catch((error) => console.log(error));
+
+// Routes
 app.use("/admin", adminRoutes);
 app.use(shopRoutes);
 
