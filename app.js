@@ -1,29 +1,17 @@
 const path = require("path");
 
 const express = require("express");
-const bodyParser = require("body-parser");
 
+const mongoConnection = require("./utils/database");
 const adminRoutes = require("./routes/admin");
 const shopRoutes = require("./routes/shop");
-const db = require("./utils/database");
 
 const app = express();
 
-// body parser to parse the incoming data.. {extended: false} as the extension was deprecated add it extensively
-app.use(bodyParser.urlencoded());
+app.use(express.json());
 
 // static path that directs to the public folder
 app.use(express.static(path.join(__dirname, "public")));
-
-// Middleware: functions that has access to all the req, res and next functionalities.
-// next(); //helps to jump to the next middleware
-
-// Sql promise/ Query
-db.execute("SELECT * FROM products")
-  .then((result) => {
-    console.log(result[0]);
-  })
-  .catch((error) => console.log(error));
 
 // Routes
 app.use("/admin", adminRoutes);
@@ -35,6 +23,11 @@ app.use((req, res, next) => {
     .sendFile(path.join(__dirname, "views", "page-not-found.html"));
 });
 
-app.listen(3000, () => {
-  console.log("Hello");
+// app.listen(3000, () => {
+//   console.log("Hello");
+// });
+
+mongoConnection((client) => {
+  console.log(client);
+  app.listen(3000);
 });
